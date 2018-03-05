@@ -15,7 +15,7 @@ const {
 } = require('./src/index');
 
 describe(('You are awesome, aren\'t you?'), () => {
-  /*it('createEnumerableProperty', async () => {
+  it('createEnumerableProperty', async () => {
     const propertyName = 'property';
     const propertyValue = 'value';
 
@@ -43,8 +43,6 @@ describe(('You are awesome, aren\'t you?'), () => {
 
   it('createProtoMagicObject', () => {
     const magicObj = createProtoMagicObject();
-		console.log(magicObj.__proto__);
-		console.log(magicObj.prototype);
 
     assert.notEqual(typeof magicObj, 'object');
 	assert.equal(magicObj.__proto__, magicObj.prototype);
@@ -57,7 +55,7 @@ describe(('You are awesome, aren\'t you?'), () => {
     assert.equal(incrementor()()()()(), 15);
   });
 
-  /*it('asyncIncrementor', async () => {
+  it('asyncIncrementor', async () => {
     await asyncIncrementor();
     await asyncIncrementor();
     assert.equal(await asyncIncrementor(), 3);
@@ -71,7 +69,7 @@ describe(('You are awesome, aren\'t you?'), () => {
     ]);
 
     assert.equal(await asyncIncrementor(), 9);
-  });*/
+  });
 
   it('createIncrementer', () => {
     const inc = createIncrementer();
@@ -89,7 +87,7 @@ describe(('You are awesome, aren\'t you?'), () => {
     }
   });
 
-  /*it('returnBackInSecond', (done) => {
+  it('returnBackInSecond', (done) => {
     const param = 'param';
 
     let check;
@@ -120,7 +118,7 @@ describe(('You are awesome, aren\'t you?'), () => {
         }
       }
     }, 100); 
-  });*/
+  });
 
   it('getDeepPropertiesCount', () => {
     const obj = {};

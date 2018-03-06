@@ -28,7 +28,10 @@ function incrementor () {
   return counter;
 };
 
-//const asyncIncrementor = () => {};
+var asyncincrementorSum = 1;
+asyncIncrementor = function() {
+	return asyncincrementorSum++;
+};
 
 function createIncrementer() {
 	var b = {
@@ -86,6 +89,7 @@ let temp = [], openingBrackets = [], closingBrackets = [];
 	return count-1;
 };
 
+
   
 createSerializedObject = function () {
  
@@ -95,14 +99,16 @@ return this;
 createSerializedObject.prototype = null;
 
 
-const toBuffer = () => {};
-const sortByProto = () => {};
+//const toBuffer = () => {};
+sortByProto = function(objectsArr) {
+	return objectsArr.sort((a,b) => {return a.__proto__ - b.__proto__;})
+};
 
 exports.createEnumerableProperty = createEnumerableProperty;
 exports.createNotEnumerableProperty = createNotEnumerableProperty;
 exports.createProtoMagicObject = createProtoMagicObject;
 exports.incrementor = incrementor;
-//exports.asyncIncrementor = asyncIncrementor;
+exports.asyncIncrementor = asyncIncrementor;
 exports.createIncrementer = createIncrementer;
 exports.returnBackInSecond = returnBackInSecond;
 exports.getDeepPropertiesCount = getDeepPropertiesCount;

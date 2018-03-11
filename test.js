@@ -43,9 +43,6 @@ describe(('You are awesome, aren\'t you?'), () => {
 
   it('createProtoMagicObject', () => {
     const magicObj = createProtoMagicObject();
-		console.log(magicObj.__proto__);
-		console.log(magicObj.prototype);
-
     assert.notEqual(typeof magicObj, 'object');
 	assert.equal(magicObj.__proto__, magicObj.prototype);
   });
@@ -151,13 +148,8 @@ describe(('You are awesome, aren\'t you?'), () => {
 
   it('createSerializedObject', () => {
     const object = createSerializedObject();
-
     assert.equal(typeof object, 'object');
-	console.log("We are here: " +typeof(object));
-	console.log("JSON.stringify(object): " +stringify(object));
-	//console.log("JSON.parse(JSON.stringify(object): " +JSON.parse(JSON.stringify(object)));
-
-    assert.equal(JSON.parse(JSON.stringify(object)), object);
+	assert.equal(JSON.parse(JSON.stringify(object)), object);
   });
 
   it('sortByProto', () => {

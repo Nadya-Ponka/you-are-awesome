@@ -1,7 +1,7 @@
 // DO WHATEVER YOU WANT HERE
 
 createEnumerableProperty = function(name) {
-	var obj = {};
+	let obj = {};
 	obj.name=0;
 	return obj;
 };
@@ -10,11 +10,12 @@ function createNotEnumerableProperty(name){
 return Symbol(name);
 }
 
-function createProtoMagicObject () {
-	return function() {var obj = {}; return obj;};
+function createProtoMagicObject() {
+
+return function() { let obj; return obj;}
 }; 
-		
-var incrementorSum = 0;
+
+let incrementorSum = 0;
 
 function incrementor () {
   incrementorSum++;
@@ -34,11 +35,9 @@ asyncIncrementor = function() {
 };
 
 function createIncrementer() {
-	var b = {
+	let b = {
 		value: 0,
 		next: function() {this.value = this.value+1; return this;},
-		/*valueOf: function(){ return this.value; },
-		toString: this.valueOf*/
 		[Symbol.iterator]: function() {return this; }
 	}
 return b;		
@@ -46,8 +45,7 @@ return b;
 
 // return same argument not earlier than in one second, and not later, than in two
 returnBackInSecond = function(param) {
-  
-  var parametr = param;
+  let parametr = param;
   
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -55,7 +53,7 @@ returnBackInSecond = function(param) {
       // можно без результата, чтобы управление перешло в следующий then
       // (или можно передать данные пользователя дальше по цепочке)
      resolve (parametr);
-    }, 1001);
+    }, 1000);
   });
   
   promise.then(); 
@@ -64,44 +62,34 @@ returnBackInSecond = function(param) {
 }
 
 function getDeepPropertiesCount(obj) { 
-var len=JSON.stringify(obj);
-var count=0;
+	let len=JSON.stringify(obj);
+	let count=0;
 
-let temp = [], openingBrackets = [], closingBrackets = [];
+	let temp = [], openingBrackets = [], closingBrackets = [];
   
-	  openingBrackets[0]='{'; 
-	  closingBrackets[0]='}';
+	openingBrackets[0]='{'; 
+	closingBrackets[0]='}';
+    temp.push(len[0]);
 
- temp.push(len[0]);
+	for (i = 1; i < len.length; i++) {
+		symbol = len[i];
 
- for (i = 1; i < len.length; i++) {
-    symbol = len[i];
+		if (openingBrackets.indexOf(symbol) > -1) {		
+			temp.push(symbol);
 
-	if (openingBrackets.indexOf(symbol) > -1) {
-		
-					temp.push(symbol);
-
-	} else if (closingBrackets.indexOf(symbol) > -1) {
-     temp.pop(); 
-	count++;} else continue;
+		} else if (closingBrackets.indexOf(symbol) > -1) {
+			temp.pop(); 
+			count++;} else continue;
     }
-	
-	return count-1;
+return count-1;
 };
 
-
-  
 createSerializedObject = function () {
- 
-return this;
+return null;
 }
 
-createSerializedObject.prototype = null;
-
-
-//const toBuffer = () => {};
 sortByProto = function(objectsArr) {
-	return objectsArr.sort((a,b) => {return a.__proto__ - b.__proto__;})
+return objectsArr.sort((a,b) => {return a.__proto__ - b.__proto__;})
 };
 
 exports.createEnumerableProperty = createEnumerableProperty;

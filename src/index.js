@@ -11,9 +11,10 @@ return Symbol(name);
 }
 
 function createProtoMagicObject() {
-
-return function() { let obj; return obj;}
-}; 
+	function magic(){};
+	magic.prototype=Function.prototype;	
+return magic;
+}
 
 let incrementorSum = 0;
 
@@ -21,7 +22,7 @@ function incrementor () {
   incrementorSum++;
   function counter() {
     incrementorSum++;
-    return counter;
+   return counter;
   }
   counter.toString = function() {
     return incrementorSum;

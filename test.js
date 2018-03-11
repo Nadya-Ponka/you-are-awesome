@@ -43,7 +43,7 @@ describe(('You are awesome, aren\'t you?'), () => {
 
   it('createProtoMagicObject', () => {
     const magicObj = createProtoMagicObject();
-    assert.notEqual(typeof magicObj, 'object');
+	assert.notEqual(typeof magicObj, 'object');
 	assert.equal(magicObj.__proto__, magicObj.prototype);
   });
 
